@@ -1,0 +1,165 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-init, p, h1 {
+    margin-top: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.btn-init {
+    position: relative;
+    padding: 7px 15px;
+    background-color: #57f;
+    border: 2px solid #7af;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.btn-init::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    border: 2px solid #57f;
+    background-color: rgba(255, 255, 255, .3);
+    opacity: 0;
+    transform: rotate(90deg);
+    transition: .4s opacity ease-out, .3s top, .3s left, .3s right, .3s bottom, .3s transform;
+}
+.btn-init:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #57f;
+    opacity: 1;
+    transform: rotate(0);
+    transition: .4s opacity ease-out, .3s top, .3s left, .3s right, .3s bottom, .3s transform;
+}
+
+.container-tictactoe {
+    font-family: sans-serif;
+    width: 154px;
+    min-height: 204px;
+    display: flex;
+    flex-direction: column;
+}
+.tictactoe {
+    position: relative;
+    width: 154px;
+    height: 154px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.tictactoe .boxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-content: space-between;
+    justify-content: space-between;
+    background-color: #000;
+}
+.messages {
+    flex: 1;
+    width: 100%;
+    border-top: 1px solid #909090;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: center;
+    padding: 7px 5px;
+}
+.tictactoe .boxes label {
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
+}
+
+.tictactoe .boxes label.open {
+    cursor: pointer;
+    animation: canclick 1s infinite;
+}
+
+@keyframes canclick {
+    0%, 100%{
+        background-color: #fff
+    }
+    50%{
+        background-color: #ffb
+    }
+}
+
+.tictactoe .boxes label span {
+    flex: 1;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+.tictactoe .boxes label input {
+    display: none;
+}
+.winner_reference {
+    position: absolute;
+    background-color: #ccc;
+    visibility: hidden;
+}
+.winner_reference.winner {
+    visibility: visible;
+}
+
+.winner_reference.end_point_00.end_point_20,
+.winner_reference.end_point_01.end_point_21,
+.winner_reference.end_point_02.end_point_22 {
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+.winner_reference.end_point_00.end_point_20{top: 15%}
+.winner_reference.end_point_01.end_point_21{top: 50%; transform: translateY(-50%);}
+.winner_reference.end_point_02.end_point_22{top: 80%; transform: translateY(100%);}
+
+.winner_reference.end_point_00.end_point_02,
+.winner_reference.end_point_10.end_point_12,
+.winner_reference.end_point_20.end_point_22 {
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+.winner_reference.end_point_00.end_point_02{left: 15%}
+.winner_reference.end_point_10.end_point_12{left: 50%; transform: translateX(-50%);}
+.winner_reference.end_point_20.end_point_22{left: 80%; transform: translateX(100%);}
+
+.winner_reference.end_point_00.end_point_22,
+.winner_reference.end_point_02.end_point_20 {
+    top: 50%;
+    right: -10%;
+    left: -10%;
+    height: 4px;
+}
+.winner_reference.end_point_00.end_point_22{transform: rotate(45deg);}
+.winner_reference.end_point_02.end_point_20{transform: rotate(-45deg);}

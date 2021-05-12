@@ -34,7 +34,7 @@ app.get('/', (request, response) => {
             <body>
                 <h1>Play the classic Tic Tac Toe game with other person</h1>
                 <p>Maybe you'll wait until an other people connect to play with you</p>
-                <button class="btn-init" onclick="initGame()">Iniciar</button>
+                <button class="btn-init" onclick="initGame()">Play</button>
             </body>
             <script src="/testWinner.js"></script>
             <script src="/game.js"></script>
